@@ -1,0 +1,115 @@
+{
+  "artifact": {
+    "filename": "DistantHorizons-3.3.4-26.3-fabric-neoforge.jar",
+    "sha256": "ba3e5c85a765a109219831df99b99ef5cfcdee05b2dfa6796993bd48d3947",
+    "size_bytes": 28476894,
+    "zip_entries": 2196
+  },
+  "mod": {
+    "id": "distanthorizons",
+    "version": "3.3.4",
+    "minecraft": "26.3",
+    "java_minimum": 25,
+    "license_metadata": "LGPL-3",
+    "provides": ["lod"]
+  },
+  "platforms": ["Fabric", "NeoForge"],
+  "architecture": {
+    "estimated_dh_class_files": 1019,
+    "major_packages": [
+      "com.seibel.distanthorizons.api",
+      "com.seibel.distanthorizons.common",
+      "com.seibel.distanthorizons.core",
+      "com.seibel.distanthorizons.fabric",
+      "com.seibel.distanthorizons.neoforge"
+    ]
+  },
+  "rendering": {
+    "api": "OpenGL",
+    "key_components": [
+      "GlDhMetaRenderer",
+      "GlDhTerrainRenderer",
+      "GlDhRenderApiDefinition",
+      "GLBuffer",
+      "GLVertexBuffer",
+      "GLIndexBuffer",
+      "GlDhFramebuffer",
+      "GlShader",
+      "GlShaderProgram",
+      "GlDhTerrainShaderProgram"
+    ],
+    "post_processing": [
+      "TAA",
+      "sharpening",
+      "far fade",
+      "vanilla fade",
+      "fog",
+      "SSAO"
+    ]
+  },
+  "lod_and_generation": [
+    "DhWorldGenerator",
+    "DhChunkGenerator",
+    "DhInternalServerGenerator",
+    "DhRoughSurfaceGenerator",
+    "ChunkUpdateQueueManager",
+    "WorldChunkUpdateManager",
+    "ChunkPosQueue"
+  ],
+  "persistence": {
+    "sqlite_embedded": true,
+    "native_sqlite": true,
+    "native_compression": ["Zstandard", "LZ4"]
+  },
+  "threading": [
+    "RenderThreadTaskHandler",
+    "ServerThreadTaskHandler",
+    "RateLimitedThreadPoolExecutor",
+    "PriorityTaskPicker",
+    "ThreadPoolUtil",
+    "DhThreadFactory",
+    "PositionalLockProvider"
+  ],
+  "gpu": {
+    "upload_configuration_class": "EDhApiGpuUploadMethod"
+  },
+  "integration_mixins": {
+    "client": [
+      "MixinClientLevel",
+      "MixinGameRenderer",
+      "MixinFogRenderer",
+      "MixinLevelRenderer",
+      "MixinChunkSectionsToRender",
+      "MixinLightTexture",
+      "MixinProjectionMatrixBuffer",
+      "MixinIrisFrameBuffer",
+      "MixinMinecraft"
+    ],
+    "server": [
+      "MixinChunkGenerator",
+      "MixinChunkMap",
+      "MixinServerPlayer",
+      "MixinTracingExecutor",
+      "MixinUtilBackgroundThread",
+      "MixinLevelTicks"
+    ]
+  },
+  "updater": {
+    "components_observed": [
+      "SelfUpdater",
+      "GitlabGetter",
+      "UpdateModScreen",
+      "ChangelogScreen"
+    ],
+    "dynamic_security_verdict": "not assessed"
+  },
+  "research_value": [
+    "multi-resolution terrain",
+    "persistent LOD cache",
+    "asynchronous generation",
+    "prioritized streaming",
+    "separate distant-terrain render stage",
+    "CPU-to-GPU upload boundary",
+    "platform adapter architecture"
+  ]
+}
